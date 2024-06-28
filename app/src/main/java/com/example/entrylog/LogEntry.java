@@ -2,6 +2,7 @@ package com.example.entrylog;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -42,6 +43,10 @@ public class LogEntry extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences preferences=getSharedPreferences("LogApp",MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferences.edit();
+                editor.clear();
+                editor.apply();
                 Intent i=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(i);
             }
